@@ -3,22 +3,17 @@ package biz.ostw.fsi.xml
 import biz.ostw.fsi.Part
 
 /**
-  * Created by mathter on 28.07.17.
+  * Created by mathter on 29.07.17.
   */
-class TerminalPart() extends Part {
+class CDataPart extends Part {
 
   private var _start: Int = 0
 
-  private var _text: String = null
+  private var _text: CharSequence = null
 
-  def this(_text: String) = {
+  def this(text: String) = {
     this()
-
-    if (_text == null) {
-      throw new NullPointerException("value of the therminal part can't be null!")
-    }
-
-    this._text = _text
+    this._text = text
   }
 
   override def start(): Int = {
@@ -30,7 +25,7 @@ class TerminalPart() extends Part {
   }
 
   override def text(): String = {
-    this._text
+    CDataPart.cdata_start + this._text + CDataPart.sdata_end
   }
 
   def text(text: String): Unit = {
@@ -39,6 +34,12 @@ class TerminalPart() extends Part {
 
   override def recalc(start: Int): Int = {
     this._start = start
-    this._start + this._text.length
+    this._start + this.text().length
   }
+}
+
+object CDataPart{
+  private val cdata_start = "<![CDATA["
+
+  private val sdata_end = "]]>"
 }
