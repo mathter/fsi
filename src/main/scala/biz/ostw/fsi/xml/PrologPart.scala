@@ -8,24 +8,20 @@ import biz.ostw.fsi.ContainerPart
   */
 class PrologPart() extends ContainerPart with WithAttributes {
 
-  private val _version: String = "version"
-
-  private val _encoding: String = "encoding"
-
   def version(): String = {
-    this.attribute(_version)
+    this.attribute(PrologPart.version)
   }
 
   def version(version: String): Unit = {
-    this.attribute(_version, version)
+    this.attribute(PrologPart.version, version)
   }
 
   def encoding(): String = {
-    this.attribute(_encoding)
+    this.attribute(PrologPart.encoding)
   }
 
   def encoding(encoding: String): Unit = {
-    this.attribute(_encoding, encoding)
+    this.attribute(PrologPart.encoding, encoding)
   }
 
   override def text(): String = {
@@ -37,4 +33,10 @@ class PrologPart() extends ContainerPart with WithAttributes {
   override def attribute(name: String, value: String) = new ImplicitWithAttributes(this).attribute(name, value)
 
   override def attribute(name: String) = new ImplicitWithAttributes(this).attribute(name)
+}
+
+object PrologPart {
+  private val version: String = "version"
+
+  private val encoding: String = "encoding"
 }

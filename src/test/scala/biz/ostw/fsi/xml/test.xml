@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<root>
+    <!-- This is a simple comment -->
+
+    <element1 name="test element 1">
+        <!-- This is a multiline comment.
+         This is a second line of the comment-->
+        <element2 name="test element 2">
+            <![CDATA[This is a CDADA]]>
+            <element3 name="test element 3"/>
+        </element2>
+    </element1>
+</root>

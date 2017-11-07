@@ -7,6 +7,7 @@ import biz.ostw.fsi.Part
 /**
   * Created by mathter on 04.07.17.
   */
-class PartDestination extends Destination[Part] {
-  override def uri(): URI = new URI("translator:destination:part")
+class PartDestination[T <: Part] extends Destination[T] {
+
+  override def uri(): URI = new URI("translator:destination:part/")
 }

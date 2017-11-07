@@ -16,8 +16,8 @@ class XmlTranslator extends Translator {
   override def translate[S, D](source: Source[S], destination: Destination[D]): D = {
 
     if (source.isInstanceOf[InputStreamSource]) {
-      if (destination.isInstanceOf[PartDestination]) {
-        this.stream2part(source.asInstanceOf[InputStreamSource], destination.asInstanceOf[PartDestination]).asInstanceOf[D]
+      if (destination.isInstanceOf[PartDestination[_]]) {
+        this.stream2part(source.asInstanceOf[InputStreamSource], destination.asInstanceOf[PartDestination[_]]).asInstanceOf[D]
       } else {
         throw new InvalidDestinationException(destination)
       }
@@ -37,7 +37,7 @@ class XmlTranslator extends Translator {
     }
   }
 
-  private def stream2part(source: InputStreamSource, destination: PartDestination): DocumentPart = {
+  private def stream2part(source: InputStreamSource, destination: PartDestination[_]): DocumentPart = {
     val stream = new ANTLRInputStream(source.inputStream)
     val lexer = new XmlLexer(stream)
     val commonTokenStream = new CommonTokenStream(lexer)

@@ -19,4 +19,29 @@ object PartFactory {
   def comment(text: String): CommentPart = {
     new CommentPart(text)
   }
+
+  def prolog(encoding: String = "UTF-8", version: String = "1.0"): PrologPart = {
+    val prologPart = new PrologPart
+    prologPart.encoding(encoding)
+    prologPart.version(version)
+
+    prologPart
+  }
+
+  def document(root: ElementPart, encoding: String = "UTF-8", version: String = "1.0"): DocumentPart = {
+    val documentPart = new DocumentPart
+
+    documentPart.add(PartFactory.prolog(encoding, version))
+    documentPart.add(PartFactory.terminal("\n\t"))
+
+    if (root != null) {
+      documentPart.add(root)
+    }
+
+    documentPart
+  }
+
+  def element(name: String): ElementPart = {
+    new ElementPart(name)
+  }
 }
