@@ -18,6 +18,14 @@ class ContainerPart extends Part {
     Option(this._childs).map(_.lastOption.map(_.stop).get).getOrElse(0)
   }
 
+  def content(): Array[Part] = {
+    this.childs
+  }
+
+  def contentAsText(): String = {
+    this._childs.foldLeft("")((s, e) => s.concat(e.text))
+  }
+
   def add(part: Part): this.type = {
     this._childs += part
     this
