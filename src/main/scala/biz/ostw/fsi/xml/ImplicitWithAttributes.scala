@@ -34,7 +34,6 @@ class ImplicitWithAttributes(val part: ContainerPart) extends WithAttributes {
 
   def attribute(name: String): String = {
 
-    Option(this.part.getByType[AttributePart].filter(_.name.equals(name)).headOption.getOrElse(null))
-      .map(_.value).get
+    Option(this.part.getByType[AttributePart].find(_.name.equals(name)).map(_.value).orNull).orNull
   }
 }
