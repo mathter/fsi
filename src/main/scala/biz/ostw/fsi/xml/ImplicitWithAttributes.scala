@@ -6,11 +6,19 @@ import biz.ostw.fsi.ContainerPart
   * Created by mathter on 28.07.17.
   */
 class ImplicitWithAttributes(val part: ContainerPart) extends WithAttributes {
-  def attributes(): Array[AttributePart] = {
+  override def attributes(): Array[AttributePart] = {
     this.part.getByType[AttributePart]
   }
 
-  def attribute(name: String, value: String): AttributePart = {
+
+  override def attributes(name: String): Array[AttributePart] = {
+    Option(name)
+      .map(name =>
+        this.part.getByType[AttributePart]
+          .filter(a => name.equals(a.name))).getOrElse(new Array[AttributePart](0))
+  }
+
+  override def attribute(name: String, value: String): AttributePart = {
     var attributePart: AttributePart = this.part.getByType[AttributePart].find(_.name.equals(name)).getOrElse(null)
 
     if (value != null) {
@@ -32,7 +40,7 @@ class ImplicitWithAttributes(val part: ContainerPart) extends WithAttributes {
     attributePart
   }
 
-  def attribute(name: String): String = {
+  override def attribute(name: String): String = {
 
     Option(this.part.getByType[AttributePart].find(_.name.equals(name)).map(_.value).orNull).orNull
   }

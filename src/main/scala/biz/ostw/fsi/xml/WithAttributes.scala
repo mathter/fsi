@@ -5,9 +5,11 @@ package biz.ostw.fsi.xml
   */
 trait WithAttributes {
 
-  def attributes(): Array[AttributePart];
+  def attributes(): Array[AttributePart]
 
-  def attribute(name: String, value: String): AttributePart;
+  def attributes(name: String): Array[AttributePart]
 
-  def attribute(name: String): String;
+  def attribute(name: String, value: String): AttributePart
+
+  def attribute(name: String): String
 }

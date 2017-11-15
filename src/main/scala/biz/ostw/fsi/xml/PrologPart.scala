@@ -30,6 +30,8 @@ class PrologPart() extends ContainerPart with WithAttributes {
 
   override def attributes() = new ImplicitWithAttributes(this).attributes()
 
+  override def attributes(name: String) = new ImplicitWithAttributes(this).attributes(name)
+
   override def attribute(name: String, value: String) = new ImplicitWithAttributes(this).attribute(name, value)
 
   override def attribute(name: String) = new ImplicitWithAttributes(this).attribute(name)

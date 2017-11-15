@@ -41,7 +41,7 @@ class ElementPart() extends ContainerPart with WithAttributes with Named {
   }
 
   override def text(): String = {
-    this._openTag.text + super.text + this._closeTag.text
+    this._openTag.text + (if (this.childs.isEmpty) "" else super.text + this._closeTag.text)
   }
 
   override def recalc(start: Int) = {
@@ -69,11 +69,41 @@ class ElementPart() extends ContainerPart with WithAttributes with Named {
     this._openTag.attributes()
   }
 
+  override def attributes(name: String) = {
+    new ImplicitWithAttributes(this).attributes(name)
+  }
+
   override def attribute(name: String, value: String) = {
     this._openTag.attribute(name, value)
   }
 
   override def attribute(name: String) = {
     this._openTag.attribute(name)
+  }
+
+  override def add(part: Part) = {
+    super.add(part)
+    this._openTag.isFlashed(false)
+    this
+  }
+
+  override def add(afterPart: Part, part: Part) = {
+    super.add(afterPart, part)
+    this._openTag.isFlashed(false)
+    this
+  }
+
+  override def addBefor(beforPart: Part, part: Part) = {
+    super.addBefor(beforPart, part)
+    this._openTag.isFlashed(false)
+    this
+  }
+
+  override def remove(part: Part) = {
+    super.remove(part)
+    if (this.childs.isEmpty) {
+      this._openTag.isFlashed(false)
+    }
+    this
   }
 }
