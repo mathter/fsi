@@ -12,7 +12,7 @@
 
     <groupId>biz.ostw</groupId>
     <artifactId>fsi</artifactId>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>File structure investigation project</description>
