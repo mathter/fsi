@@ -160,7 +160,7 @@
 
     <profiles>
         <profile>
-            <id>with-pgp</id>
+            <id>release</id>
             <build>
                 <plugins>
                     <plugin>
