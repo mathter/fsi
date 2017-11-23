@@ -1,4 +1,4 @@
-package biz.ostw.fsi.orm.hibernate.xml
+package biz.ostw.fsi.orm.hibernate.xml.attr
 
 import biz.ostw.fsi.xml.WithAttributes
 
@@ -7,7 +7,7 @@ import biz.ostw.fsi.xml.WithAttributes
   */
 trait ALazy extends WithAttributes {
   def _lazy(): String = {
-    this.attribute(AName.attr)
+    this.attribute(ALazy.attr)
   }
 }
 

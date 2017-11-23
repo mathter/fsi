@@ -1,6 +1,7 @@
 package biz.ostw.fsi.orm.hibernate.xml
 
 
+import biz.ostw.fsi.orm.hibernate.xml.attr._
 import biz.ostw.fsi.xml.{ElementPart, WithAttributes, WrapperPartWithAttributes}
 
 /**
@@ -16,4 +17,8 @@ class Version(elementPart: ElementPart)
     with ALength
     with AGenerated
     with AInsert {
+}
+
+object Version {
+  val elem_version = "version"
 }

@@ -1,5 +1,6 @@
 package biz.ostw.fsi.orm.hibernate.xml
 
+import biz.ostw.fsi.orm.hibernate.xml.attr.{AClass, ALazy, AName, ANode}
 import biz.ostw.fsi.xml.{ElementPart, WrapperPartWithAttributes}
 
 /**
@@ -11,5 +12,9 @@ class Component(elementPart: ElementPart)
     with ALazy
     with ANode
     with AClass {
+}
+
+object Component {
+  val elem_component = "component"
 }
 

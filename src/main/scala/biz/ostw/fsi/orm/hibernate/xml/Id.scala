@@ -1,5 +1,6 @@
 package biz.ostw.fsi.orm.hibernate.xml
 
+import biz.ostw.fsi.orm.hibernate.xml.attr._
 import biz.ostw.fsi.xml.{ElementPart, WrapperPartWithAttributes}
 
 /**

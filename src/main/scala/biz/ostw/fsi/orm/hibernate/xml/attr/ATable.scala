@@ -1,4 +1,4 @@
-package biz.ostw.fsi.orm.hibernate.xml
+package biz.ostw.fsi.orm.hibernate.xml.attr
 
 import biz.ostw.fsi.xml.WithAttributes
 
@@ -7,7 +7,7 @@ import biz.ostw.fsi.xml.WithAttributes
   */
 trait ATable extends WithAttributes {
   def table(): String = {
-    this.attribute(AName.attr)
+    this.attribute(ATable.attr)
   }
 }
 

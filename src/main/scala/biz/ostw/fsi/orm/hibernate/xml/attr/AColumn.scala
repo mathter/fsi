@@ -1,4 +1,4 @@
-package biz.ostw.fsi.orm.hibernate.xml
+package biz.ostw.fsi.orm.hibernate.xml.attr
 
 import biz.ostw.fsi.xml.WithAttributes
 

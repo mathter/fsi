@@ -1,4 +1,4 @@
-package biz.ostw.fsi.orm.hibernate.xml
+package biz.ostw.fsi.orm.hibernate.xml.attr
 
 import biz.ostw.fsi.xml.WithAttributes
 
@@ -7,7 +7,7 @@ import biz.ostw.fsi.xml.WithAttributes
   */
 trait AFormula extends WithAttributes {
   def formula(): String = {
-    this.attribute(AColumn.attr)
+    this.attribute(AFormula.attr)
   }
 }
 

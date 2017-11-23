@@ -1,4 +1,4 @@
-package biz.ostw.fsi.orm.hibernate.xml
+package biz.ostw.fsi.orm.hibernate.xml.attr
 
 import biz.ostw.fsi.xml.WithAttributes
 
@@ -7,7 +7,7 @@ import biz.ostw.fsi.xml.WithAttributes
   */
 trait AType extends WithAttributes {
   def _type(): String = {
-    this.attribute(AName.attr)
+    this.attribute(AType.attr)
   }
 }
 
