@@ -5,19 +5,11 @@ import biz.ostw.fsi.xml.{ElementPart, WrapperPartWithAttributes}
 /**
   * @author mathter (c) 2017.
   */
-class Class(elementPart: ElementPart)
+class Component(elementPart: ElementPart)
   extends WrapperPartWithAttributes(elementPart)
     with AName
     with ALazy
-    with ATable
     with ANode
-    with AAbstract
-    with AWhere
-    with AEntityName
-    with ADiscriminatorValue {
-
+    with AClass {
 }
 
-object Class {
-  val elem_class = "class"
-}
