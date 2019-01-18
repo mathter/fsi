@@ -30,8 +30,8 @@
 
     <scm>
         <url>https://github.com/mathter/fsi</url>
-        <connection>scm:hg:https://github.com/mathter/fsi</connection>
-        <developerConnection>scm:hg:https://github.com/mathter/fsi</developerConnection>
+        <connection>scm:git:https//github.com/mathter/fsi</connection>
+        <developerConnection>scm:git:https//github.com/mathter/fsi</developerConnection>
     </scm>
 
     <developers>
