@@ -11,7 +11,7 @@
 
     <groupId>biz.ostw</groupId>
     <artifactId>fsi</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>File structure investigation project</description>
@@ -28,9 +28,9 @@
     </licenses>
 
     <scm>
-        <url>https://github.com/mathter/fsi</url>
-        <connection>scm:git:https//github.com/mathter/fsi</connection>
-        <developerConnection>scm:git:https//github.com/mathter/fsi</developerConnection>
+        <url>https://github.com/mathter/fsi.git</url>
+        <connection>scm:git:https://github.com/mathter/fsi.git</connection>
+        <developerConnection>scm:git:https://github.com/mathter/fsi.git</developerConnection>
       <tag>1.0.4</tag>
   </scm>
 
@@ -134,7 +134,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.9.1</version>
+                <version>3.0.1</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -180,7 +180,7 @@
                     <plugin>
                         <groupId>org.sonatype.plugins</groupId>
                         <artifactId>nexus-staging-maven-plugin</artifactId>
-                        <version>1.6.7</version>
+                        <version>1.6.8</version>
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
@@ -192,4 +192,15 @@
             </build>
         </profile>
     </profiles>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 </project>
