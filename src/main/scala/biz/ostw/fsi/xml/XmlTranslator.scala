@@ -25,6 +25,7 @@ class XmlTranslator extends Translator {
       if (source.isInstanceOf[PartSource]) {
         if (destination.isInstanceOf[OutputStreamDestination]) {
           val writer = new OutputStreamWriter(destination.asInstanceOf[OutputStreamDestination].outputStream)
+          writer.flush
           writer.write(source.asInstanceOf[PartSource].part.text.toString)
 
           destination.asInstanceOf[OutputStreamDestination].outputStream.asInstanceOf[D]
