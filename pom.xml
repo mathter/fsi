@@ -11,7 +11,7 @@
 
     <groupId>biz.ostw</groupId>
     <artifactId>fsi</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5-SNAPSHOT</version>
 
     <name>${project.groupId}:${project.artifactId}</name>
     <description>File structure investigation project</description>
@@ -31,7 +31,7 @@
         <url>https://github.com/mathter/fsi.git</url>
         <connection>scm:git:https://github.com/mathter/fsi.git</connection>
         <developerConnection>scm:git:https://github.com/mathter/fsi.git</developerConnection>
-      <tag>fsi-1.0.4</tag>
+      <tag>1.0.4</tag>
   </scm>
 
     <developers>
