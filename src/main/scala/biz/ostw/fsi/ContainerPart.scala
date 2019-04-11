@@ -11,7 +11,7 @@ class ContainerPart extends Part {
   private val _childs = new ArrayBuffer[Part](0)
 
   override def start() = {
-    Option(this._childs).map(_.headOption.map(_.start).get).getOrElse(0)
+    this._childs.headOption.map(_.start).getOrElse(0)
   }
 
   override def stop() = {
@@ -60,21 +60,10 @@ class ContainerPart extends Part {
   }
 
   def getByType[T <: Part]()(implicit ev: ClassTag[T]): Array[T] = {
-    Option(this.childs).map(_.filter(ev.runtimeClass.isInstance(_)).foldLeft(new ArrayBuffer[T](0)) { (array, part) => {
-      array += part.asInstanceOf[T]
-    }
-    }.toArray[T]).getOrElse(new Array[T](0))
+    this.childs.filter(ev.runtimeClass.isInstance(_)).foldLeft(new ArrayBuffer[T](0)) ((a, part) => a += part.asInstanceOf[T]).toArray[T]
   }
 
   override def recalc(start: Int): Int = {
-    if (this.childs != null) {
-      this.childs.foldLeft(start) { (startIndex, part) => {
-        part.recalc(startIndex)
-      }
-      }
-    }
-    else {
-      start
-    }
+    this.childs.foldLeft(start)((s, p) => p.recalc(s))
   }
 }

@@ -10,6 +10,6 @@ import biz.ostw.fsi.Part
 class PartSource(val part: Part, val uri: URI) extends Source[Part] {
 
   def this(part: Part) {
-    this(part, new URI("translator:source:part"))
+    this(part, new URI("fsi:translator:part"))
   }
 }
