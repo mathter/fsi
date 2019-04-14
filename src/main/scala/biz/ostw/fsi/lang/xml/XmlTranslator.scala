@@ -4,7 +4,7 @@ import java.io.OutputStreamWriter
 
 import biz.ostw.fsi.translator._
 import org.antlr.v4.runtime.tree.ParseTreeWalker
-import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
+import org.antlr.v4.runtime.{ANTLRInputStream, CharStreams, CommonTokenStream}
 
 /**
   * Created by mathter on 04.07.17.
@@ -39,7 +39,7 @@ class XmlTranslator extends Translator {
   }
 
   private def stream2part(source: InputStreamSource, destination: PartDestination[_]): DocumentPart = {
-    val stream = new ANTLRInputStream(source.inputStream)
+    val stream = CharStreams.fromStream(source.inputStream)
     val lexer = new XmlLexer(stream)
     val commonTokenStream = new CommonTokenStream(lexer)
     val xmlParser = new XmlParser(commonTokenStream)

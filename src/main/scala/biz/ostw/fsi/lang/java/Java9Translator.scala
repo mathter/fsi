@@ -3,9 +3,8 @@ package biz.ostw.fsi.lang.java
 import java.io.OutputStreamWriter
 
 import biz.ostw.fsi.translator._
-import biz.ostw.fsi.lang.xml.{XmlLexer, XmlParser, XmlProcessing}
 import org.antlr.v4.runtime.tree.ParseTreeWalker
-import org.antlr.v4.runtime.{ANTLRInputStream, CommonTokenStream}
+import org.antlr.v4.runtime.{ANTLRInputStream, CharStreams, CommonTokenStream}
 
 class Java9Translator extends Translator {
   @throws[InvalidSourceException]
@@ -36,12 +35,14 @@ class Java9Translator extends Translator {
   }
 
   private def stream2part(source: InputStreamSource, destination: PartDestination[_]): Java9CompilationUnitPart = {
-    val stream = new ANTLRInputStream(source.inputStream)
+    val stream = CharStreams.fromStream(source.inputStream)
     val lexer = new Java9Lexer(stream)
     val commonTokenStream = new CommonTokenStream(lexer)
     val parser = new Java9Parser(commonTokenStream)
     val walker = new ParseTreeWalker
     val processing = new Java9Processing
+
+    parser.compilationUnit();
 
     walker.walk(processing, parser.compilationUnit)
     processing.compilationUnitPart
