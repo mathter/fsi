@@ -38,7 +38,7 @@ trait Part {
     * @return index of last symbol of the part.
     */
   def recalc(start: Int): Int = {
-    this.start + this.text.length
+    start + this.text.length
   };
 
   override def toString: String = this.text

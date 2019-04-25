@@ -235,7 +235,7 @@ staticImportOnDemandDeclaration
 typeDeclaration
 	:	classDeclaration
 	|	interfaceDeclaration
-	|	';'
+	|	';' ws*
 	;
 
 moduleDeclaration
@@ -265,11 +265,11 @@ classDeclaration
 	;
 
 normalClassDeclaration
-	:	(classModifiers ws+)? 'class' ws+ identifier (ws+ typeParameters)? (ws+ superclass)? (ws+ superinterfaces)? ws* classBody
+	:	(classModifiers ws+)? 'class' ws+ identifier (ws* typeParameters)? (ws+ superclass)? (ws+ superinterfaces)? ws* classBody
 	;
 
 classModifiers
-    :   classModifier (ws* classModifier)*
+    :   classModifier (ws+ classModifier)*
     ;
 
 classModifier
@@ -292,7 +292,7 @@ typeParameterList
 	;
 
 superclass
-	:	'extends' classType
+	:	'extends' ws+ classType
 	;
 
 superinterfaces
@@ -456,7 +456,7 @@ result
 	;
 
 methodDeclarator
-	:	identifier ws* '(' ws* formalParameterList? ws* ')' ws* dims?
+	:	identifier ws* '(' ws* formalParameterList? ws* ')' (ws* dims)?
 	;
 
 formalParameterList
@@ -565,7 +565,7 @@ enumConstantList
 	;
 
 enumConstant
-	:	(enumConstantModifiers ws+)? identifier ('(' argumentList? ')')? classBody?
+	:	(enumConstantModifiers ws+)? identifier (ws* '(' ws* (argumentList ws*)? ')')? (ws* classBody)?
 	;
 
 enumConstantModifiers
@@ -624,7 +624,7 @@ interfaceMemberDeclaration
 	;
 
 constantDeclaration
-	:	(constantModifier ws+)? unannType ws+ variableDeclaratorList ws* ';' ws*
+	:	(constantModifiers ws+)? unannType ws+ variableDeclaratorList ws* ';' ws*
 	;
 
 constantModifiers
@@ -639,7 +639,7 @@ constantModifier
 	;
 
 interfaceMethodDeclaration
-	:	(interfaceMethodModifiers ws+)? methodHeader methodBody
+	:	(interfaceMethodModifiers ws+)? methodHeader ws* methodBody
 	;
 
 interfaceMethodModifiers
@@ -697,15 +697,15 @@ annotation
 	;
 
 normalAnnotation
-	:	'@' typeName ws* '(' ws* elementValuePairList? ws* ')'
+	:	'@' typeName ws* '(' ws* (elementValuePairList ws*)? ')'
 	;
 
 elementValuePairList
-	:	elementValuePair (',' elementValuePair)*
+	:	elementValuePair (ws* ',' ws* elementValuePair)*
 	;
 
 elementValuePair
-	:	identifier '=' elementValue
+	:	identifier ws* '=' ws* elementValue
 	;
 
 elementValue
@@ -715,11 +715,11 @@ elementValue
 	;
 
 elementValueArrayInitializer
-	:	'{' elementValueList? ','? '}'
+	:	'{' ws* (elementValueList ws*)? ','? ws* '}'
 	;
 
 elementValueList
-	:	elementValue (',' elementValue)*
+	:	elementValue (ws* ',' ws* elementValue)*
 	;
 
 markerAnnotation
@@ -827,7 +827,7 @@ statementExpression
 	;
 
 ifThenStatement
-	:	'if' ws* '(' ws* expression ws* ')' ws* statement
+	:	e='if' ws* '(' ws* expression ws* ')' ws* statement {System.out.println( "expr: " + $expression.text + " " + $e.line);}
 	;
 
 ifThenElseStatement
@@ -909,7 +909,7 @@ forUpdate
 	;
 
 statementExpressionList
-	:	statementExpression (',' statementExpression)*
+	:	statementExpression (ws* ',' ws* statementExpression)*
 	;
 
 enhancedForStatement
@@ -921,11 +921,11 @@ enhancedForStatementNoShortIf
 	;
 
 breakStatement
-	:	'break' ws+ identifier? ws* ';' ws*
+	:	'break' (ws+ identifier)? ws* ';' ws*
 	;
 
 continueStatement
-	:	'continue' ws+ identifier? ws* ';' ws*
+	:	'continue' (ws+ identifier)? ws* ';' ws*
 	;
 
 returnStatement
@@ -937,7 +937,7 @@ throwStatement
 	;
 
 synchronizedStatement
-	:	'synchronized' ws+ '(' ws* expression ws* ')' ws* block
+	:	'synchronized' ws* '(' ws* expression ws* ')' ws* block
 	;
 
 tryStatement

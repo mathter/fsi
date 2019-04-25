@@ -1,14 +1,26 @@
-interface Interface<T extends List> {
-    public T getValue();
+class Interface<T extends List> {
 
-    public static enum E {
-        A(1),
-        B(2);
+    public void f() {
+        if ( result) {
+            result = false;
+            Iterator<Certificate> iteratorCert = certificates.iterator();
+            while (iteratorCert.hasNext()) {
+                Certificate _certificate = iteratorCert.next();
+                if (_certificate.equals(certificate)) {
+                    iteratorCert.remove();
+                    result = true;
+                    break;
+                }
+            }
+        }
+    }
 
-        private int x;
-
-        E(int x){
-            this.x = x;
+    public enum systemType {
+        UPG {
+            @Override
+            public String toString() {
+                return "UPG";
+            }
         }
     }
 }

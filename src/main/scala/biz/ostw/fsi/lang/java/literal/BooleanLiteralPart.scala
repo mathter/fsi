@@ -1,4 +1,6 @@
 package biz.ostw.fsi.lang.java.literal
 
-class BooleanLiteralPart(text: String) extends LiteralTextPart(text) {
+import biz.ostw.fsi.lang.java.KeyWord
+
+class BooleanLiteralPart extends LiteralPart[Boolean] {
 }

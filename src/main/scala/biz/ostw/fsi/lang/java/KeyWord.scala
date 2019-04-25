@@ -104,4 +104,8 @@ object KeyWord {
   val VOLATILE = KeyWord("volatile")
 
   val WHILE = KeyWord("while")
+
+  val TRUE = KeyWord("true")
+
+  val FALSE = KeyWord("false")
 }
