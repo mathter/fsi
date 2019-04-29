@@ -1,5 +1,6 @@
 package biz.ostw.fsi.lang.java
 
+import biz.ostw.fsi.lang.java.translator.{Java9Translator, JavaCompilationUnitPartDestination}
 import biz.ostw.fsi.translator.InputStreamSource
 import org.junit.Test
 

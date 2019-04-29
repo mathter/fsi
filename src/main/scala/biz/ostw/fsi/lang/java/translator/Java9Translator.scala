@@ -1,10 +1,12 @@
-package biz.ostw.fsi.lang.java
+package biz.ostw.fsi.lang.java.translator
 
 import java.io.OutputStreamWriter
 
+import biz.ostw.fsi.lang.java.part.Java9CompilationUnitPart
+import biz.ostw.fsi.lang.java.{Java9Lexer, Java9Parser}
 import biz.ostw.fsi.translator._
 import org.antlr.v4.runtime.tree.ParseTreeWalker
-import org.antlr.v4.runtime.{ANTLRInputStream, CharStreams, CommonTokenStream}
+import org.antlr.v4.runtime.{CharStreams, CommonTokenStream}
 
 class Java9Translator extends Translator {
   @throws[InvalidSourceException]

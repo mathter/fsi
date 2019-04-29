@@ -1,4 +1,4 @@
-package biz.ostw.fsi.lang.java.literal
+package biz.ostw.fsi.lang.java.part.literal
 
 class StringLiteralPart(text: String = "") extends LiteralPart {
 }
